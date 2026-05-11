@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Progress Bar</title>
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.progress-box {
+  width: 300px;
+  height: 25px;
+  border: 1px solid black;
+  margin: auto;
+}
+
+#bar {
+  height: 100%;
+  width: 0%;
+  background: green;
+  color: white;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<h2>📊 Progress Bar</h2>
+
+<div class="progress-box">
+  <div id="bar">0%</div>
+</div>
+
+<br>
+
+<button id="startBtn">Start</button>
+<button id="pauseBtn">Pause</button>
+<button id="resumeBtn">Resume</button>
+<button id="resetBtn">Reset</button>
+
+<script>
+let width = 0;
+let interval = null;
+
+// update UI
+function updateBar() {
+  let bar = document.getElementById("bar");
+  bar.style.width = width + "%";
+  bar.innerText = width + "%";
+}
+
+// run progress
+function run() {
+  if (width >= 100) {
+    clearInterval(interval);
+    interval = null;
+    return;
+  }
+  width++;
+  updateBar();
+}
+
+// start
+document.getElementById("startBtn").onclick = function () {
+  clearInterval(interval);
+  width = 0;
+  updateBar();
+  interval = setInterval(run, 50);
+};
+
+// pause
+document.getElementById("pauseBtn").onclick = function () {
+  clearInterval(interval);
+  interval = null;
+};
+
+// resume
+document.getElementById("resumeBtn").onclick = function () {
+  if (interval === null) {
+    interval = setInterval(run, 50);
+  }
+};
+
+// reset
+document.getElementById("resetBtn").onclick = function () {
+  clearInterval(interval);
+  interval = null;
+  width = 0;
+  updateBar();
+};
+</script>
+
+</body>
+</html>

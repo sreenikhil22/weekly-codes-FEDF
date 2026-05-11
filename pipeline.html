@@ -1,0 +1,38 @@
+<html>
+<body>
+<h2>Rendering Pipeline Example</h2>
+
+<div id="app"></div>
+<button onclick="increment()">Increase</button>
+
+<script>
+// STATE
+let count = 0;
+
+// RENDER FUNCTION (Virtual UI → Real DOM)
+function render() {
+  console.log(" Rendering UI...");
+
+  // Virtual representation (like Virtual DOM)
+  let virtualUI = "<h1>Count: " + count + "</h1>";
+
+  // Update real DOM (final step)
+  document.getElementById("app").innerHTML = virtualUI;
+}
+
+// STATE CHANGE
+function increment() {
+  console.log(" State Changed");
+
+  count = count + 1;
+
+  // Trigger rendering pipeline
+  render();
+}
+
+// Initial render
+render();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Component-Based Example</title>
+</head>
+<body>
+<!--DEVELOP ANY WEBSITE HOME PAGE WITH COMPONENTS AS BELOW -->
+<div id="app"></div>
+
+<script>
+  // Header Component
+  function Header() {
+    return "<h1 style='color:blue'>My Website</h1>";
+  }
+
+  // Navbar Component
+  function Navbar() {
+    return "<p><a href='#'>Home</a> | <a href='#'>About</a> | <a href='#'>Contact</a></p>";
+  }
+
+  // Content Component
+  function Content() {
+    return "<p>Welcome to Component-Based Design Example!</p>";
+  }
+
+  // Footer Component
+  function Footer() {
+    return "<h3 style='color:gray'>© 2026 My Website</h3>";
+  }
+
+  // App Component (combining all)
+  function App() {
+    return Header() + Navbar() + Content() + Footer();
+  }
+
+  // Render to UI
+  document.getElementById("app").innerHTML = App();
+</script>
+
+</body>
+</html>

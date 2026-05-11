@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  text-align:center;
+  background:linear-gradient(#ff9a9e,#fad0c4);
+}
+input{
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+p{
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+<h2> Smart Form</h2>
+<input id="name" placeholder="Enter name" oninput="validate()">
+<p id="msg"></p>
+
+<script>
+function validate(){
+  let val=document.getElementById("name").value;
+  let msg=document.getElementById("msg");
+
+  if(val.length<3){
+    msg.innerText=" Too short";
+    msg.style.color="red";
+  }else{
+    msg.innerText=" Valid";
+    msg.style.color="green";
+  }
+}
+</script>
+</body>
+</html>

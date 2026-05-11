@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Unidirectional Data Flow Example</title>
+</head>
+<body>
+<h1>Counter Example</h1>
+<!-- UI -->
+<h2 id="display">0</h2>
+<!-- User Action -->
+<button onclick="increment()">Increase</button>
+<button onclick="decrement()">Decrease</button>
+<script>
+  // STATE (Single Source of Truth)
+  let count = 0;
+  // RENDER FUNCTION (State → UI)
+  function render() {
+    document.getElementById("display").innerText = count;
+  }
+  // UPDATE STATE (User Action → State)
+  function increment() {
+    count = count + 1;
+    render(); // Update UI
+  }
+  function decrement() {
+    count = count - 1;
+    render(); // Update UI
+  }
+  // Initial render
+  render();
+</script>
+</body>
+</html>

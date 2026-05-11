@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial;
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.addBtn {
+  background: #4CAF50;
+  color: white;
+}
+
+.deleteBtn {
+  background: #ff4d4d;
+  color: white;
+}
+
+li {
+  list-style: none;
+  background: white;
+  margin: 10px auto;
+  padding: 10px;
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+/* Completed style */
+.completed {
+  background: #90ee90;
+  text-decoration: line-through;
+}
+</style>
+</head>
+
+<body>
+
+<h1>To-Do App</h1>
+
+<input id="taskInput" placeholder="Enter task">
+<button class="addBtn" onclick="addTask()">Add</button>
+
+<ul id="list"></ul>
+
+<script>
+let state = {
+  tasks: []
+};
+
+function render() {
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  state.tasks.forEach((task, index) => {
+    let li = document.createElement("li");
+
+    if (task.completed) {
+      li.classList.add("completed");
+    }
+
+    // Task text (click to toggle complete)
+    let span = document.createElement("span");
+    span.innerText = task.text;
+    span.onclick = () => toggleTask(index);
+
+    // Delete button
+    let delBtn = document.createElement("button");
+    delBtn.innerText = "Delete";
+    delBtn.className = "deleteBtn";
+    delBtn.onclick = () => deleteTask(index);
+
+    li.appendChild(span);
+    li.appendChild(delBtn);
+    list.appendChild(li);
+  });
+}
+
+function addTask() {
+  let input = document.getElementById("taskInput");
+
+  if (input.value.trim() === "") return;
+
+  state.tasks.push({
+    text: input.value,
+    completed: false
+  });
+
+  input.value = "";
+  render();
+}
+
+function toggleTask(index) {
+  state.tasks[index].completed = !state.tasks[index].completed;
+  render();
+}
+
+function deleteTask(index) {
+  state.tasks.splice(index, 1);
+  render();
+}
+
+// Initial render
+render();
+
+</script>
+
+</body>
+</html>

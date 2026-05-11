@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input onkeyup="search()" placeholder="Search">
+
+<ul id="list">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+
+<!-- TASK ADD MORE ITEMS UPTO 20 -->
+</ul>
+
+<script>
+function search() {
+  let val = document.querySelector("input").value.toLowerCase();
+  document.querySelectorAll("li").forEach(li => {
+    li.style.display = li.innerText.toLowerCase().includes(val) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>

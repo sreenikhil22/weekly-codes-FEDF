@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  text-align:center;
+  background:#111;
+  color:#00ffcc;
+  font-family:monospace;
+}
+h1{
+  font-size:60px;
+}
+button{
+  padding:10px 15px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#00ffcc;
+}
+</style>
+</head>
+
+<body>
+<h2>⏱ Stopwatch</h2>
+<h1><span id="sec">00</span>:<span id="ms">00</span></h1>
+
+<button onclick="start()">Start</button>
+<button onclick="pause()">Pause</button>
+<button onclick="reset()">Reset</button>
+
+<script>
+let sec=0,ms=0,interval;
+
+function start(){
+  clearInterval(interval);
+  interval=setInterval(()=>{
+    ms++;
+    if(ms==100){sec++;ms=0;
+      document.getElementById("sec").innerText=sec;
+    }
+    document.getElementById("ms").innerText=ms;
+  },10);
+}
+
+function pause(){clearInterval(interval);}
+function reset(){
+  sec=0;ms=0;
+  document.getElementById("sec").innerText="00";
+  document.getElementById("ms").innerText="00";
+}
+</script>
+</body>
+</html>

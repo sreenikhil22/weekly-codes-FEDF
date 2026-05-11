@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Framework Concept Simulation</title>
+</head>
+<body>
+<h1>User Profile</h1>
+<div id="app"></div>
+<button onclick="updateUser()">Update User</button>
+<script>
+// STATE (Single source of truth)
+let user = {
+  name: "John",
+  age: 25
+ };
+// RENDER FUNCTION (UI from state)
+function render() {
+  document.getElementById("app").innerHTML =
+    "<p>Name: " + user.name + "</p>" +
+    "<p>Age: " + user.age + "</p>";
+}
+// UPDATE STATE
+function updateUser() {
+  user.name = "David";
+  user.age = 30;
+  render(); // Only one call updates UI
+}
+// Initial render
+render();
+</script>
+</body>
+</html>

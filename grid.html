@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+  text-align:center;
+  background:#222;
+  color:white;
+}
+#grid{
+  display:grid;
+  grid-template-columns:repeat(3,80px);
+  gap:10px;
+  justify-content:center;
+}
+.box{
+  width:80px;height:80px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.box:hover{
+  transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+<h2> Smart Color Grid</h2>
+<div id="grid"></div>
+
+<script>
+let state = Array(9).fill("#444");
+
+function render(){
+  let g=document.getElementById("grid");
+  g.innerHTML="";
+  state.forEach((c,i)=>{
+    let d=document.createElement("div");
+    d.className="box";
+    d.style.background=c;
+    d.onclick=()=>update(i);
+    g.appendChild(d);
+  });
+}
+
+function update(i){
+  state[i]="#"+Math.floor(Math.random()*16777215).toString(16);
+  render();
+}
+render();
+</script>
+</body>
+</html>

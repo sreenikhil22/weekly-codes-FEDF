@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<h1>Calculator</h1>
+
+<input type="number" id="num1" placeholder="Enter first number">
+<input type="number" id="num2" placeholder="Enter second number">
+
+<br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<h1 id="result"></h1>
+
+<script>
+function calculate() {
+    var a = Number(document.getElementById("num1").value);
+    var b = Number(document.getElementById("num2").value);
+
+    var add = a + b;
+    var sub = a - b;
+    var mul = a * b;
+    var div = a / b;
+
+    document.getElementById("result").innerHTML =
+        "Addition: " + add + "<br>" +
+        "Subtraction: " + sub + "<br>" +
+        "Multiplication: " + mul + "<br>" +
+        "Division: " + div;
+}
+</script>
+
+</body>
+</html>
